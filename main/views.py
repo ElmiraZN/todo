@@ -7,3 +7,6 @@ def homepage(request):
 
 def test(request):
     return render(request, 'test.html')
+
+def welcome(request):
+    return HttpResponse('<h1><strong>Welcome to the new page!</strong></h1>')
