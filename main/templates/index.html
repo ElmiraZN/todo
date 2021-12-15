@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="../To do list/styles/index.css" />
+    <link rel="stylesheet" href="../To do list/styles/checkbox.css">
+    <script async>
+        function hover(element) {
+            element.setAttribute('src', './icons/recycle-bin_open.png');
+        }
+
+        function unhover(element) {
+            element.setAttribute('src', '././icons/recycle-bin_closed.png');
+        }
+    </script>
+</head>
+
+<body>
+    <section>
+
+        <div class="create_container">
+            <input class="create_input" type="text" placeholder="New task" />
+            <button class="create_button">Add</button>
+        </div>
+
+        <div class="todo_container">
+
+            <div class="todo_item">
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4>Bake a cake</h4>
+                </div>
+                <div class="todo_item_footer">
+                    <p>13.12.2021 <span>16:25</span></p>
+                    <div class="action_buttons">
+
+                        <img src="./icons/star_white.png">
+                        <img src="././icons/recycle-bin_closed.png" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="todo_item marked">
+
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4>Bake a cake</h4>
+                </div>
+
+                <div class="todo_item_footer">
+                    <p>13.12.2021 <span>16:25</span></p>
+                    <div class="action_buttons">
+                        <img src="./icons/star_yellow.png">
+                        <img src="./icons/recycle-bin_closed.png" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="todo_item done">
+
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4>Bake a cake</h4>
+                </div>
+
+                <div class="todo_item_footer">
+                    <p>13.12.2021 <span>16:25</span></p>
+                    <div class="action_buttons">
+                        <img src="./icons/star_white.png">
+                        <img src="./icons/recycle-bin_closed.png" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+</html>
