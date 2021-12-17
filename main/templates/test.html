@@ -12,6 +12,9 @@
 
 <body>
     <h2>This is a test site</h2>
+    {% for todo in todo_list %}
+    <h3>{{ todo.text }} - {{ todo.created_at }}</h3>
+    {% endfor %}
 </body>
 
 </html>
