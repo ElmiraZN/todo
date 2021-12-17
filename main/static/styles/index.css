@@ -87,6 +87,7 @@ section {
 }
 
 .todo_item_header h4 {
+    text-transform: capitalize;
     font-size: 18px;
     /* font-family: sans-serif; */
 }
