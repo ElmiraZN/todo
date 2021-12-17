@@ -13,3 +13,9 @@ class ToMeet(models.Model):
     date_of_meeting = models.DateField(auto_now=False)
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
+
+class goal_for_month(models.Model):
+    goal = models.CharField(max_length=20)
+    month = models.DateField(auto_now=False)
+    difficulty = models.CharField(max_length=10)
+    reason_for_goal = models.TextField(max_length=200)
