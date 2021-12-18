@@ -6,13 +6,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meeting</title>
+    <link rel="stylesheet" href="{% static 'styles/meeting.css' %}?2021129" />
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
+
 </head>
 
 <body>
-    {% for meeting in tomeet_list %}
-    <h3>{{ meeting.person }} - {{ meeting.phone_number }} - {{ meeting.date_of_meeting }}</h3>
-    {% endfor %}
+    <section>
+
+        <div class="create_container">
+            <form action="{% url 'add-tomeet' %}" method="POST">
+                {% csrf_token %}
+                <input class="create_input" type="text" placeholder="Name of the person" name="add-tomeet_person" />
+                <input class="create_input" type="tel" placeholder="Phone" name="add-tomeet_phone" />
+                <input class="create_input" type="date" placeholder="Date of meeting" name="add-tomeet_date" />
+                <button class="create_button">Add</button>
+            </form>
+        </div>
+
+        <div class="todo_container">
+            {% for meeting in tomeet_list %}
+            <div class="todo_item">
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4>{{ meeting.person }}</h4><br>
+                </div>
+                <div class="todo_item_filler">
+                    {{ meeting.phone_number }}
+                </div>
+                <div class="todo_item_footer">
+                    <p>{{ meeting.date_of_meeting }}</p>
+                    <div class="action_buttons">
+                        <img src="{% static './icons/star_white.png' %}">
+                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 </body>
 
 </html>

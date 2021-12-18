@@ -1,3 +1,5 @@
+from functools import partial
+from typing import Text
 from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo, ToMeet, goal_for_month
@@ -24,3 +26,11 @@ def add_todo(request):
     todo = ToDo(text=text)
     todo.save()
     return redirect(test)
+
+def add_tomeet(request):
+    form = request.POST
+    person = form['add-tomeet']
+    # toMeet = ToMeet(person=person)
+    # toMeet.save()
+    print(form)
+    return redirect(meeting)

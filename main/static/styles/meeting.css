@@ -15,11 +15,15 @@ section {
 }
 
 .create_container {
+    display: flex;
+    justify-content: space-around;
     width: 80%;
 }
 
 .create_input {
-    width: 80%;
+    width: 27%;
+    height: 53px;
+    margin: 0 2px;
     padding: 12px 5px;
     font-size: 18px;
     border: 1px solid;
@@ -28,6 +32,7 @@ section {
 
 .create_button {
     width: 15%;
+    height: 53px;
     padding: 12px 20px;
     background-color: #22404b;
     border: 1px solid #22404b;
@@ -91,12 +96,12 @@ section {
     /* font-family: sans-serif; */
 }
 
-.todo_item_header h5 {
-    font-size: 14pt;
-}
-
 .todo_item_header h4::first-letter {
     text-transform: capitalize;
+}
+
+.todo_item_filler {
+    font-size: 12pt;
 }
 
 .todo_item_footer {
