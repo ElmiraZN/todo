@@ -12,3 +12,7 @@ def test(request):
 
 def welcome(request):
     return HttpResponse('<h1><strong>Welcome to the new page!</strong></h1>')
+
+def meeting(request):
+    tomeet_list = ToMeet.objects.all()
+    return render(request, 'meeting.html', {"tomeet_list": tomeet_list})

@@ -16,7 +16,7 @@ Including another URLconf
 from os import stat
 from django.contrib import admin
 from django.urls import path
-from main.views import homepage, test, welcome
+from main.views import homepage, test, welcome, meeting
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,5 +25,6 @@ urlpatterns = [
     path('', homepage, name='home'),
     path('test/', test, name='test'),
     path('welcome/', welcome),
+    path('meeting/', meeting, name='meeting')
 ]   + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) \
     + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -87,9 +87,12 @@ section {
 }
 
 .todo_item_header h4 {
-    text-transform: capitalize;
     font-size: 18px;
     /* font-family: sans-serif; */
+}
+
+.todo_item_header h4::first-letter {
+    text-transform: capitalize;
 }
 
 .todo_item_footer {
