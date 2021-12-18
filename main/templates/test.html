@@ -11,13 +11,23 @@
     <link rel="stylesheet" href="{% static 'styles/index.css' %}?20181209" />
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
 
+    <!-- <script async>
+        function hover(element) {
+            element.setAttribute('src ', { % static './icons/recycle-bin_open.png' %
+            });
+        }
+
+        function unhover(element) {
+            element.setAttribute('src ', { % static './icons/recycle-bin_closed.png' %
+            });
+        }
+    </script> -->
+
+    <!-- {% static './icons/recycle-bin_closed.png' %} -->
 </head>
 
 <body>
-    <!-- <h2>This is a test site</h2>
-    {% for todo in todo_list %}
-    <h3>{{ todo.text }} - {{ todo.created_at }}</h3>
-    {% endfor %} -->
+
 
     <section>
 
@@ -41,8 +51,8 @@
                     <p>{{ todo.created_at }}</p>
                     <div class="action_buttons">
 
-                        <img src="./icons/star_white.png">
-                        <img src="././icons/recycle-bin_closed.png" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                        <img src="{% static './icons/star_white.png' %}">
+                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
                         <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
