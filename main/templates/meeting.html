@@ -16,12 +16,13 @@
     <section>
 
         <div class="create_container">
-            <form action="{% url 'add-tomeet' %}" method="POST">
-                {% csrf_token %}
-                <input class="create_input" type="text" placeholder="Name of the person" name="add-tomeet_person" />
-                <input class="create_input" type="tel" placeholder="Phone" name="add-tomeet_phone" />
-                <input class="create_input" type="date" placeholder="Date of meeting" name="add-tomeet_date" />
-                <button class="create_button">Add</button>
+            <form method="POST">
+                {% csrf_token %} \ {{ form.person }} {{ form.phone_number }} {{ form.date_of_meeting }}
+                <!-- <span>{{ error }}</span> -->
+                <!-- <input class="create_input" type="text" placeholder="Name of the person" name="add-tomeet_person" /> -->
+                <!-- <input class="create_input" type="number" placeholder="Phone" name="add-tomeet_phone" /> -->
+                <!-- <input class="create_input" type="text" placeholder="Date of meeting" name="add-tomeet_date" /> -->
+                <button class="create_button" type="submit">Add</button>
             </form>
         </div>
 
@@ -42,7 +43,7 @@
                     <p>{{ meeting.date_of_meeting }}</p>
                     <div class="action_buttons">
                         <img src="{% static './icons/star_white.png' %}">
-                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon">
                         <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
