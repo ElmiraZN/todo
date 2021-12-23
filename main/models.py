@@ -19,3 +19,9 @@ class goal_for_month(models.Model):
     month = models.DateField(auto_now=False)
     difficulty = models.CharField(max_length=10)
     reason_for_goal = models.TextField(max_length=200)
+
+class Habits(models.Model):
+    name = models.CharField(max_length=30)
+    done_for_today = models.BooleanField(default=False)
+    important = models.BooleanField(default=False)
+    comment = models.CharField(max_length=100)
