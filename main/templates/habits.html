@@ -26,20 +26,30 @@
         <div class="todo_container">
 
             {% for habit in habits_list %}
-            <div class="todo_item">
+            <div class="todo_item {% if habit.important %} marked {% elif habit.done_for_today %} done {% endif %}">
+
                 <div class="todo_item_header">
                     <label class="checkbox_container">
-                        <input type="checkbox">
+                        <input type="checkbox"
+                            {% if habit.done_for_today %}
+                                checked
+                            {% endif %}
+                        />
                         <span class="checkmark"></span>
                     </label>
-                    <h4>{{ habit.name }}</h4>
+                    <h4><a href="{% url 'close-habits' habit.id %}">{{ habit.name }}</a></h4>
                 </div>
                 <div class="todo_item_footer">
                     <p>{{ habit.comment }}</p>
                     <div class="action_buttons">
 
-                        <img src="{% static './icons/star_white.png' %}">
-                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
+                        {% if habit.important %}
+                        <a href="{% url 'unmark-habits' habit.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        {% else %}
+                        <a href="{% url 'mark-habits' habit.id %}"><img src="{% static './icons/star_white.png' %}"></a>
+                        {% endif %}
+
+                        <a href="{% url 'delete-habits' habit.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
                         <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>

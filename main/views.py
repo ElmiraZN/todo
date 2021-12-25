@@ -95,6 +95,29 @@ def habits(request):
     form = HabitsForm()
     return render(request, 'habits.html', {'habits_list': habits_list, 'form': form})
 
+def delete_habits(request, id):
+    habit = Habits.objects.get(id=id)
+    habit.delete()
+    return redirect(habits)
+
+def mark_habits(request, id):
+    habit = Habits.objects.get(id=id)
+    habit.important = True
+    habit.save()
+    return redirect(habits)
+
+def unmark_habits(request, id):
+    habit = Habits.objects.get(id=id)
+    habit.important = False
+    habit.save()
+    return redirect(habits)
+
+def close_habits(request, id):
+    habit = Habits.objects.get(id=id)
+    habit.done_for_today = not habit.done_for_today
+    habit.save()
+    return redirect(habits)
+
 # def add_tomeet(request):
 #     form = request.POST
 #     # form = ToMeetForm()
