@@ -3,8 +3,8 @@ from typing import Text
 from django import forms
 from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
-from .models import ToDo, ToMeet, goal_for_month
-from .forms import ToMeetForm
+from .models import Habits, ToDo, ToMeet, goal_for_month
+from .forms import ToMeetForm, HabitsForm
 
 # Create your views here.
 
@@ -36,6 +36,18 @@ def add_todo(request):
     todo = ToDo(text=text)
     todo.save()
     return redirect(test)
+
+def habits(request):
+    if request.method == 'POST':
+        form = HabitsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(habits)
+        else:
+            return HttpResponse('The form was filled out wrong!')
+    habits_list = Habits.objects.all()
+    form = HabitsForm()
+    return render(request, 'habits.html', {'habits_list': habits_list, 'form': form})
 
 # def add_tomeet(request):
 #     form = request.POST
