@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* color: ; */
+}
+
+section {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.create_container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.create_input {
+    width: 40%;
+    height: 53px;
+    margin: 0 2px;
+    padding: 12px 5px;
+    font-size: 18px;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.create_button {
+    width: 15%;
+    height: 53px;
+    padding: 12px 20px;
+    background-color: #22404b;
+    border: 1px solid #22404b;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    /* box-shadow: black; */
+}
+
+.create_button:active {
+    border: 1px solid #22404b;
+    box-shadow: 2px 2px 5px 3px #3b7083;
+}
+
+.todo_container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.todo_item {
+    border: 1px solid #22404b;
+    border-radius: 5px;
+    background-color: #ad6684;
+    width: 24%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.todo_item.marked {
+    background-color: #aa2d61;
+}
+
+.todo_item.done {
+    background-color: #373741ab;
+    text-decoration: line-through;
+    color: #373741;
+}
+
+.todo_item.done h4,
+.todo_item.done p,
+.todo_item.done span {
+    color: #373741;
+}
+
+.todo_item.done img {
+    opacity: 0.5;
+}
+
+.todo_item_header {
+    display: flex;
+    align-content: center;
+    min-height: 35px;
+}
+
+.todo_item_header h4 {
+    font-size: 18pt;
+    /* font-family: sans-serif; */
+}
+
+.todo_item_header h4::first-letter {
+    text-transform: capitalize;
+}
+
+.todo_item_filler {
+    font-size: 12pt;
+}
+
+.todo_item_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo_item_footer p {
+    font-size: 15px;
+    /* font-family: sans-serif; */
+}
+
+.todo_item_footer .action_buttons {
+    display: flex;
+}
+
+.todo_item_footer img {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+    cursor: pointer;
+}

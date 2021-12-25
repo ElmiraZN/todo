@@ -23,10 +23,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name='home'),
-    path('test/', test, name='test'),
     path('welcome/', welcome),
-    path('meeting/', meeting, name='meeting'),
+    path('test/', test, name='test'),
     path('add-todo/', add_todo, name='add-todo'),
+    path('delete-todo/<id>/', delete_todo, name='delete-todo'),
+    path('mark-todo/<id>/', mark_todo, name='mark-todo'),
+    path('meeting/', meeting, name='meeting'),
     path('habits/', habits, name='habits'),
     # path('add-tomeet/', add_tomeet, name='add-tomeet'),
 ]   + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) \

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habits</title>
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}?20181209" />
+    <link rel="stylesheet" href="{% static 'styles/habits.css' %}?20181209" />
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
 </head>
 
@@ -19,8 +19,6 @@
         <div class="create_container">
             <form method="POST">
                 {% csrf_token %} {% csrf_token %} \ {{ form.name }} {{ form.comment }}
-                <input class="create_input" type="text" placeholder="New habit" name="habit-text" />
-                <input class="create_input" type="text" placeholder="Comment" name="habit-comment" />
                 <button class="create_button" type="submit">Add</button>
             </form>
         </div>

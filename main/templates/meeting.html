@@ -18,10 +18,6 @@
         <div class="create_container">
             <form method="POST">
                 {% csrf_token %} \ {{ form.person }} {{ form.phone_number }} {{ form.date_of_meeting }}
-                <!-- <span>{{ error }}</span> -->
-                <!-- <input class="create_input" type="text" placeholder="Name of the person" name="add-tomeet_person" /> -->
-                <!-- <input class="create_input" type="number" placeholder="Phone" name="add-tomeet_phone" /> -->
-                <!-- <input class="create_input" type="text" placeholder="Date of meeting" name="add-tomeet_date" /> -->
                 <button class="create_button" type="submit">Add</button>
             </form>
         </div>
