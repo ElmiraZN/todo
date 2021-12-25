@@ -28,6 +28,7 @@ urlpatterns = [
     path('add-todo/', add_todo, name='add-todo'),
     path('delete-todo/<id>/', delete_todo, name='delete-todo'),
     path('mark-todo/<id>/', mark_todo, name='mark-todo'),
+    path('unmark-todo/<id>/', unmark_todo, name='unmark-todo'),
     path('meeting/', meeting, name='meeting'),
     path('habits/', habits, name='habits'),
     # path('add-tomeet/', add_tomeet, name='add-tomeet'),
