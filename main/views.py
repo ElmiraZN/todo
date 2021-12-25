@@ -77,6 +77,11 @@ def unmark_meeting(request, id):
     tomeet.save()
     return redirect(meeting)
 
+def close_meeting(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_closed = not tomeet.is_closed
+    tomeet.save()
+    return redirect(meeting)
 
 def habits(request):
     if request.method == 'POST':

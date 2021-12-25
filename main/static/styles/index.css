@@ -72,7 +72,8 @@ section {
 
 .todo_item.done h4,
 .todo_item.done p,
-.todo_item.done span {
+.todo_item.done span,
+.todo_item.done a {
     color: #373741;
 }
 
@@ -93,6 +94,7 @@ section {
 
 .todo_item_header h4 a {
     text-decoration: none;
+    color: white;
 }
 
 .todo_item_header h5 {

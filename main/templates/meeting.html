@@ -24,14 +24,18 @@
 
         <div class="todo_container">
             {% for meeting in tomeet_list %}
-            <div class="todo_item {% if meeting.is_favorite %} marked {% endif %}">
+            <div class="todo_item {% if meeting.is_favorite %} marked {% elif meeting.is_closed %} done {% endif %}">
 
                 <div class="todo_item_header">
                     <label class="checkbox_container">
-                        <input type="checkbox">
+                        <input type="checkbox"
+                            {% if meeting.is_closed %}
+                                checked
+                            {% endif %}
+                        >
                         <span class="checkmark"></span>
                     </label>
-                    <h4>{{ meeting.person }}</h4><br>
+                    <h4><a href="{% url 'close-meeting' meeting.id %}">{{ meeting.person }}</a></h4><br>
                 </div>
                 <div class="todo_item_filler">
                     {{ meeting.phone_number }}

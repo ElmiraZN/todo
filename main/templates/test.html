@@ -13,16 +13,13 @@
 
     <!-- <script async>
         function hover(element) {
-            // var pic2.src = "{% static "photos/1.jpg" %}"
-            var element.src = "{% static './icons/recycle-bin_open.png' %}"
+            element.setAttribute('src ', './icons/recycle-bin_open.png ');
         }
 
         function unhover(element) {
-            // element.setAttribute("{% static './icons/recycle-bin_closed.png' %}");
-            var element.src = "{% static './icons/recycle-bin_closed.png' %}"
-        } -->
-
-    <!-- </script> -->
+            element.setAttribute('src ', "{% static './icons/recycle-bin_closed.png' %}");
+        }
+    </script> -->
 
     <!-- {% static './icons/recycle-bin_closed.png' %} -->
 </head>
