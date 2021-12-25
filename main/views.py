@@ -15,21 +15,6 @@ def test(request):
     todo_list = ToDo.objects.all()
     return render(request, 'test.html', {"todo_list": todo_list})
 
-def welcome(request):
-    return HttpResponse('<h1><strong>Welcome to the new page!</strong></h1>')
-
-def meeting(request):
-    if request.method == 'POST':
-        form = ToMeetForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(meeting)
-        else:
-            return HttpResponse('The form was filled out wrong!')
-    tomeet_list = ToMeet.objects.all()
-    form = ToMeetForm()
-    return render(request, 'meeting.html', {'tomeet_list': tomeet_list, 'form': form})
-
 def add_todo(request):
     form = request.POST
     text = form["todo-text"]
@@ -53,6 +38,39 @@ def unmark_todo(request, id):
     todo.is_favorite = False
     todo.save()
     return redirect(test)
+
+def welcome(request):
+    return HttpResponse('<h1><strong>Welcome to the new page!</strong></h1>')
+
+def meeting(request):
+    if request.method == 'POST':
+        form = ToMeetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(meeting)
+        else:
+            return HttpResponse('The form was filled out wrong!')
+    tomeet_list = ToMeet.objects.all()
+    form = ToMeetForm()
+    return render(request, 'meeting.html', {'tomeet_list': tomeet_list, 'form': form})
+
+def delete_meeting(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.delete()
+    return redirect(meeting)
+
+def mark_meeting(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_favorite = True
+    tomeet.save()
+    return redirect(meeting)
+
+def unmark_meeting(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_favorite = False
+    tomeet.save()
+    return redirect(meeting)
+
 
 def habits(request):
     if request.method == 'POST':

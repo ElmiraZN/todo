@@ -24,7 +24,8 @@
 
         <div class="todo_container">
             {% for meeting in tomeet_list %}
-            <div class="todo_item">
+            <div class="todo_item {% if meeting.is_favorite %} marked {% endif %}">
+
                 <div class="todo_item_header">
                     <label class="checkbox_container">
                         <input type="checkbox">
@@ -38,8 +39,12 @@
                 <div class="todo_item_footer">
                     <p>{{ meeting.date_of_meeting }}</p>
                     <div class="action_buttons">
-                        <img src="{% static './icons/star_white.png' %}">
-                        <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon">
+                        {% if meeting.is_favorite %}
+                        <a href="{% url 'unmark-meeting' meeting.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        {% else %}
+                        <a href="{% url 'mark-meeting' meeting.id %}"><img src="{% static './icons/star_white.png' %}"></a>
+                        {% endif %}
+                        <a href="{% url 'delete-meeting' meeting.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon"></a>
                         <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
