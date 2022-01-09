@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}" />
     <script async>
         function hover(element) {
-            element.setAttribute('src ', './icons/recycle-bin_open.png ');
+            element.setAttribute('src', "{% static './icons/recycle-bin_open.png' %}");
         }
 
         function unhover(element) {
-            element.setAttribute('src ', "{% static './icons/recycle-bin_closed.png' %}");
+            element.setAttribute('src', "{% static './icons/recycle-bin_closed.png' %}");
         }
     </script>
 </head>
@@ -46,7 +46,6 @@
 
                         <img src="{% static './icons/star_white.png' %}">
                         <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">
-                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
             </div>
@@ -82,7 +81,7 @@
                 </div>
 
                 <div class="todo_item_footer">
-                    <p>13.12.2021 <span>16:25</span></p>
+                    <p>13.12.2021 <span>16:30</span></p>
                     <div class="action_buttons">
                         <img src="{% static './icons/star_white.png' %}">
                         <img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);">

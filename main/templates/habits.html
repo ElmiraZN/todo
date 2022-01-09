@@ -9,6 +9,15 @@
     <title>Habits</title>
     <link rel="stylesheet" href="{% static 'styles/habits.css' %}?20181209" />
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
+    <script async>
+        function hover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_open.png' %}");
+        }
+
+        function unhover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_closed.png' %}");
+        }
+    </script>
 </head>
 
 <body>
@@ -50,7 +59,6 @@
                         {% endif %}
 
                         <a href="{% url 'delete-habits' habit.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
-                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
             </div>

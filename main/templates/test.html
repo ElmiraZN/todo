@@ -10,18 +10,15 @@
     <!-- <link rel="stylesheet" href="{% static 'styles/test.css' %}" /> -->
     <link rel="stylesheet" href="{% static 'styles/index.css' %}?20181209" />
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
-
-    <!-- <script async>
+    <script async>
         function hover(element) {
-            element.setAttribute('src ', './icons/recycle-bin_open.png ');
+            element.setAttribute('src', "{% static './icons/recycle-bin_open.png' %}");
         }
 
         function unhover(element) {
-            element.setAttribute('src ', "{% static './icons/recycle-bin_closed.png' %}");
+            element.setAttribute('src', "{% static './icons/recycle-bin_closed.png' %}");
         }
-    </script> -->
-
-    <!-- {% static './icons/recycle-bin_closed.png' %} -->
+    </script>
 </head>
 
 <body>
@@ -62,7 +59,6 @@
                         <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/star_white.png' %}"></a>
                         {% endif %}
                         <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
-                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
                     </div>
                 </div>
             </div>

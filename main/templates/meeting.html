@@ -9,7 +9,15 @@
     <title>Meeting</title>
     <link rel="stylesheet" href="{% static 'styles/meeting.css' %}?2021129" />
     <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}?20181209" />
+    <script async>
+        function hover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_open.png' %}");
+        }
 
+        function unhover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_closed.png' %}");
+        }
+    </script>
 </head>
 
 <body>
@@ -48,8 +56,7 @@
                         {% else %}
                         <a href="{% url 'mark-meeting' meeting.id %}"><img src="{% static './icons/star_white.png' %}"></a>
                         {% endif %}
-                        <a href="{% url 'delete-meeting' meeting.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon"></a>
-                        <!-- <img src="icons/recycle-bin_open.png" style="visibility:hidden"> -->
+                        <a href="{% url 'delete-meeting' meeting.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
                     </div>
                 </div>
             </div>
