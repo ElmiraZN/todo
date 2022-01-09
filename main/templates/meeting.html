@@ -32,7 +32,7 @@
 
         <div class="todo_container">
             {% for meeting in tomeet_list %}
-            <div class="todo_item {% if meeting.is_favorite %} marked {% elif meeting.is_closed %} done {% endif %}">
+            <div class="todo_item {% if meeting.is_closed %} done {% elif meeting.is_favorite %} marked {% endif %}">
 
                 <div class="todo_item_header">
                     <label class="checkbox_container">

@@ -35,7 +35,7 @@
         <div class="todo_container">
 
             {% for habit in habits_list %}
-            <div class="todo_item {% if habit.important %} marked {% elif habit.done_for_today %} done {% endif %}">
+            <div class="todo_item {% if habit.done_for_today %} done {% elif habit.important %} marked {% endif %}">
 
                 <div class="todo_item_header">
                     <label class="checkbox_container">
