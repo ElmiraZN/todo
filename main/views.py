@@ -4,7 +4,7 @@ from django import forms
 from django.http import request
 from django.shortcuts import render, HttpResponse, redirect
 from .models import Habits, ToDo, ToMeet, goal_for_month
-from .forms import ToMeetForm, HabitsForm
+from .forms import ToMeetForm, HabitsForm, goal_for_monthForm
 
 # Create your views here.
 
@@ -117,6 +117,47 @@ def close_habits(request, id):
     habit.done_for_today = not habit.done_for_today
     habit.save()
     return redirect(habits)
+
+def goals(request):
+    if request.method == 'POST':
+        form = goal_for_monthForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(goals)
+        else:
+            return HttpResponse('The form was filled out wrong!')
+    goals_list = goal_for_month.objects.all()
+    form = goal_for_monthForm()
+    return render(request, 'goals.html', {'goals_list': goals_list, 'form': form})
+
+def delete_goals(request, id):
+    goal = goal_for_month.objects.get(id=id)
+    goal.delete()
+    return redirect(goals)
+
+def easy_goals(request, id):
+    goal = goal_for_month.objects.get(id=id)
+    goal.difficulty = "easy"
+    goal.save()
+    return redirect(goals)
+
+def medium_goals(request, id):
+    goal = goal_for_month.objects.get(id=id)
+    goal.difficulty = "medium"
+    goal.save()
+    return redirect(goals)
+
+def hard_goals(request, id):
+    goal = goal_for_month.objects.get(id=id)
+    goal.difficulty = "hard"
+    goal.save()
+    return redirect(goals)
+
+def close_goals(request, id):
+    goal = goal_for_month.objects.get(id=id)
+    goal.is_closed = not goal.is_closed
+    goal.save()
+    return redirect(goals)
 
 # def add_tomeet(request):
 #     form = request.POST

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <!-- <link rel="stylesheet" href="../To do list/styles/index.css" /> -->
+    <link rel="stylesheet" href="{% static 'styles/goals.css' %}" />
+    <!-- <link rel="stylesheet" href="../To do list/styles/checkbox.css"> -->
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}" />
+    <script async>
+        function hover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_open.png' %}");
+        }
+
+        function unhover(element) {
+            element.setAttribute('src', "{% static './icons/recycle-bin_closed.png' %}");
+        }
+    </script>
+</head>
+
+<body>
+    <section>
+
+        <div class="create_container">
+            <form method="POST">
+                {% csrf_token %} \ {{ form.goal }} {{ form.month }} {{ form.reason_for_goal }}
+                <button class="create_button" type="submit">Add</button>
+            </form>
+        </div>
+
+        <div class="todo_container">
+            {% for goal in goals_list %}
+            <div class="todo_item {% if goal.is_closed %} done {% elif goal.difficulty == 'hard' %} hard {% elif goal.difficulty == 'medium' %} medium {% endif %}">
+                <div class="todo_item_header">
+                    <label class="checkbox_container">
+                        <input type="checkbox"
+                            {% if goal.is_closed %}
+                                checked
+                            {% endif %}
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                    <h4><a href="{% url 'close-goals' goal.id %}">{{ goal.goal }}</a></h4>
+                </div>
+                <div class="todo_item_filler">
+                    {{ goal.reason_for_goal }}
+                </div>
+                <div class="todo_item_footer">
+                    {{ goal.month}}
+                    <div class="action_buttons">
+                        {% if goal.difficulty == "easy" %}
+                        <a href="{% url 'easy-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        <a href="{% url 'medium-goals' goal.id %}"><img src="{% static './icons/star_white.png' %}"></a>
+                        <a href="{% url 'hard-goals' goal.id %}"><img src="{% static './icons/star_white.png' %}"></a>
+                        {% elif goal.difficulty == "medium" %}
+                        <a href="{% url 'easy-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        <a href="{% url 'medium-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        <a href="{% url 'hard-goals' goal.id %}"><img src="{% static './icons/star_white.png' %}"></a>
+                        {% elif goal.difficulty == "hard" %}
+                        <a href="{% url 'easy-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        <a href="{% url 'medium-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        <a href="{% url 'hard-goals' goal.id %}"><img src="{% static './icons/star_yellow.png' %}"></a>
+                        {% endif %}
+                        <a href="{% url 'delete-goals' goal.id %}"><img src="{% static './icons/recycle-bin_closed.png' %}" class="icon" onmouseover="hover(this);" onmouseout="unhover(this);"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+
+</html>

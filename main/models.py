@@ -17,8 +17,9 @@ class ToMeet(models.Model):
 class goal_for_month(models.Model):
     goal = models.CharField(max_length=20)
     month = models.DateField(auto_now=False)
-    difficulty = models.CharField(max_length=10)
+    difficulty = models.CharField(max_length=10, default="easy")
     reason_for_goal = models.TextField(max_length=200)
+    is_closed = models.BooleanField(default=False)
 
 class Habits(models.Model):
     name = models.CharField(max_length=30)

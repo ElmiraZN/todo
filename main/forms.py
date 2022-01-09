@@ -1,5 +1,5 @@
 from django.db.models import fields
-from .models import ToMeet, Habits
+from .models import ToMeet, Habits, goal_for_month
 from django.forms import ModelForm, widgets, TextInput, NumberInput, DateTimeInput
 
 class ToMeetForm(ModelForm):
@@ -37,3 +37,24 @@ class HabitsForm(ModelForm):
                 'placeholder': 'Comment'
             }),
         }
+
+class goal_for_monthForm(ModelForm):
+    class Meta:
+        model = goal_for_month
+        fields = ['goal', 'month', 'reason_for_goal']
+
+        widgets = {
+            'goal': TextInput(attrs={
+                'class': 'create_input',
+                'placeholder': 'Goal name',
+            }),
+            'month': DateTimeInput(attrs={
+                'class': 'create_input',
+                'placeholder': 'Execution date'
+            }),
+            'reason_for_goal': TextInput(attrs={
+                'class': 'create_input',
+                'placeholder': 'Reason for goal'
+            }),
+        }
+
